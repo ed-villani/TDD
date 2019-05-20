@@ -1,47 +1,24 @@
 class Money:
     def __init__(self, amount, currency):
-        self.amount = amount
-        self._currency = currency
+        if amount != '' and currency != '':
+            self.amount = amount
+            self._currency = currency
+        else:
+            self.amount = None
+            self._currency = None
 
     def dollar(self, amount):
-        return Dollar(amount, 'USD')
+        return Money(amount, 'USD')
 
     def franc(self, amount):
-        return Franc(amount, 'CHF')
+        return Money(amount, 'CHF')
 
     def currency(self):
         return self._currency
 
     def times(self, multipllier):
-        pass
+        return Money(self.amount * multipllier, self.currency())
 
     def equals(self, object):
         money = object
-        return self.amount == money.amount & (type(money) == type(Money))
-
-
-class Dollar(Money):
-    def __init__(self, amount, currency):
-        super().__init__(amount, currency)
-
-    def times(self, multiplier) -> Money:
-        return Money().dollar(self.amount * multiplier)
-
-    def equals(self, object):
-        dollar = object
-        return self.amount == dollar.amount
-    def currency(self):
-        return self.currency
-
-class Franc(Money):
-    def __init__(self, amount, currency):
-        super().__init__(amount, currency)
-
-    def times(self, multiplier) -> Money:
-        return Money().franc(self.amount * multiplier)
-
-    def equals(self, object):
-        franc = object
-        return self.amount == franc.amount
-    def currency(self):
-        return self.currency
+        return self.amount == money.amount & self.currency() == money.currency()
