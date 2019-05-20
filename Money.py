@@ -21,4 +21,6 @@ class Money:
 
     def equals(self, object):
         money = object
-        return self.amount == money.amount & self.currency() == money.currency()
+        a = self.currency() == money.currency()
+        b = self.amount == money.amount
+        return a & b
