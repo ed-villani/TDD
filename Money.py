@@ -1,3 +1,11 @@
+class Money:
+    def __init__(self):
+        self.amount
+    def equals(self, object):
+        money = object
+        return self.amount == money.amount
+
+
 class Dollar:
     def __init__(self, amount):
         self.amount = amount;
@@ -8,7 +16,7 @@ class Dollar:
 
     def equals(self, object):
         dollar = object
-        return amount == dollar.amount
+        return self.amount == dollar.amount
 
 class Franc:
     def __init__(self, amount):
@@ -20,4 +28,4 @@ class Franc:
 
     def equals(self, object):
         franc = object
-        return amount == franc.amount
+        return self.amount == franc.amount
